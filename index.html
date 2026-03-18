@@ -13,7 +13,7 @@
       color: #222;
     }
     .page {
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 16px;
     }
@@ -35,10 +35,33 @@
       list-style: none;
       padding: 0;
       margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
     }
     .stop {
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      padding: 10px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .thumb {
+      width: 100%;
+      height: 140px;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 8px;
+      background: #ddd;
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .time {
       font-size: 13px;
@@ -47,7 +70,7 @@
     }
     .title {
       font-weight: 600;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
     .title a {
       color: #0869ff;
@@ -59,11 +82,12 @@
     .notes {
       font-size: 14px;
       color: #444;
+      flex: 1;
     }
     .small {
       font-size: 12px;
       color: #777;
-      margin-top: 8px;
+      margin-top: 16px;
     }
   </style>
 </head>
@@ -71,95 +95,118 @@
   <div class="page">
     <h1>Copenhagen – Day 1 (Vesterbro & Nørrebro)</h1>
     <div class="meta">
-      Crowne Plaza Copenhagen Towers base · Thu 19 Mar · Chill, cafes, bars, young/hipster areas
+      Crowne Plaza Copenhagen Towers base · Thu 19 Mar · Cafes, bars, young/hipster areas
     </div>
 
     <h2>Itinerary</h2>
     <ul class="stop-list">
       <li class="stop">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" alt="Hotel / city morning" />
+        </div>
         <div class="time">12:30 – leave hotel</div>
         <div class="title">
           <a href="https://www.google.com/maps/search/?api=1&query=Crowne%20Plaza%20Copenhagen%20Towers%20Orestads%20Boulevard%20114%20118%202300%20Copenhagen" target="_blank" rel="noopener noreferrer">
             Crowne Plaza Copenhagen Towers (Ørestad)
           </a>
         </div>
-        <div class="notes">Walk to Ørestad station and head towards the city.</div>
+        <div class="notes">Base for the trip. Walk to Ørestad Station and head towards the city.</div>
       </li>
 
       <li class="stop">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Brunch food" />
+        </div>
         <div class="time">13:00 – lunch</div>
         <div class="title">
           <a href="https://www.google.com/maps/search/?api=1&query=Mad%20%26%20Kaffe%20S%C3%B8nder%20Boulevard%2068%201720%20Copenhagen" target="_blank" rel="noopener noreferrer">
             Mad &amp; Kaffe (Vesterbro)
           </a>
         </div>
-        <div class="notes">Brunch-style plates, young local crowd on Sønder Boulevard.</div>
+        <div class="notes">Brunch-style plates on Sønder Boulevard. Young local crowd, good first stop after landing.</div>
       </li>
 
       <li class="stop">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Street with trees" />
+        </div>
         <div class="time">14:15 – 15:00 – walk &amp; explore</div>
         <div class="title">
           <a href="https://www.google.com/maps/search/?api=1&query=S%C3%B8nder%20Boulevard%201720%20Copenhagen" target="_blank" rel="noopener noreferrer">
             Sønder Boulevard &amp; Vesterbro streets
           </a>
         </div>
-        <div class="notes">Slow walk up and down Sønder Boulevard, drift towards Meatpacking (Kødbyen).</div>
+        <div class="notes">Slow walk up and down Sønder Boulevard, drift towards Meatpacking (Kødbyen). Soak up the neighbourhood vibe.</div>
       </li>
 
       <li class="stop">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80" alt="Coffee bar" />
+        </div>
         <div class="time">15:00 – coffee</div>
         <div class="title">
           <a href="https://www.google.com/maps/search/?api=1&query=Prolog%20Coffee%20Fl%C3%A6sketorvet%2010%201711%20Copenhagen" target="_blank" rel="noopener noreferrer">
             Prolog Coffee Bar (Kødbyen)
           </a>
         </div>
-        <div class="notes">Third-wave coffee in the Meatpacking District.</div>
+        <div class="notes">Third‑wave coffee in the Meatpacking District. Good reset before heading to Nørrebro.</div>
       </li>
 
       <li class="stop">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1526481280695-3c687fd543c0?auto=format&fit=crop&w=800&q=80" alt="Hip street with shops" />
+        </div>
         <div class="time">15:45 – 17:30 – Nørrebro wandering</div>
         <div class="title">
           <a href="https://www.google.com/maps/search/?api=1&query=J%C3%A6gersborggade%202200%20Copenhagen" target="_blank" rel="noopener noreferrer">
             Jægersborggade &amp; Nørrebro
           </a>
         </div>
-        <div class="notes">Indie shops, natural wine, cafes. Young, local, hipster vibe. Walk via the Lakes / Dronning Louises Bro if you feel like it.</div>
+        <div class="notes">Indie shops, wine bars, cafes. Young, local, hipster vibe. Walk via the Lakes / Dronning Louises Bro if you feel like it.</div>
       </li>
 
       <li class="stop">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1495195134817-aeb325a55b65?auto=format&fit=crop&w=800&q=80" alt="Wine bar" />
+        </div>
         <div class="time">18:30 – wine</div>
         <div class="title">
           <a href="https://www.google.com/maps/search/?api=1&query=Pompette%20M%C3%B8llegade%203%202200%20Copenhagen" target="_blank" rel="noopener noreferrer">
             Pompette (natural wine, Nørrebro)
           </a>
         </div>
-        <div class="notes">Natural wine bar, relaxed and busy. Good place to settle in before cocktails.</div>
+        <div class="notes">Natural wine bar, relaxed and busy. Settle in here before cocktails.</div>
       </li>
 
       <li class="stop">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80" alt="Cocktail bar" />
+        </div>
         <div class="time">20:00 – cocktails</div>
         <div class="title">
           <a href="https://www.google.com/maps/search/?api=1&query=The%20Barking%20Dog%20Sankt%20Hans%20Gade%2019%202200%20Copenhagen" target="_blank" rel="noopener noreferrer">
             The Barking Dog (cocktail pub)
           </a>
         </div>
-        <div class="notes">Pub-feel cocktail bar. Easy, unpretentious, young crowd.</div>
+        <div class="notes">Pub‑feel cocktail bar. Easy, unpretentious, lots of young people.</div>
       </li>
 
       <li class="stop">
+        <div class="thumb">
+          <img src="https://images.unsplash.com/photo-1521185496955-15097b20c5fe?auto=format&fit=crop&w=800&q=80" alt="Metro at night" />
+        </div>
         <div class="time">~22:00 – head back</div>
         <div class="title">
           <a href="https://www.google.com/maps/search/?api=1&query=%C3%98restad%20Station%20Copenhagen" target="_blank" rel="noopener noreferrer">
             Ørestad Station → Crowne Plaza
           </a>
         </div>
-        <div class="notes">Metro M1 back to Ørestad, short walk to the hotel. Crash.</div>
+        <div class="notes">Metro M1 back to Ørestad, short walk to the hotel. Sleep and reset for Day 2.</div>
       </li>
     </ul>
 
     <p class="small">
-      Tip: on your phone, tap the place name to open it in Google Maps, then "Save" it into a list
-      so you can see everything on one map.
+      Tip: on your phone, tap any place name to open it in Google Maps, then "Save" it into a list so you can see everything on one map.
     </p>
   </div>
 </body>
