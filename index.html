@@ -35,33 +35,10 @@
       list-style: none;
       padding: 0;
       margin: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 12px;
     }
     .stop {
-      background: #fff;
-      border-radius: 8px;
-      border: 1px solid #eee;
-      padding: 10px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    .thumb {
-      width: 100%;
-      height: 140px;
-      border-radius: 6px;
-      overflow: hidden;
-      margin-bottom: 8px;
-      background: #ddd;
-    }
-    .thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
     }
     .time {
       font-size: 13px;
@@ -82,7 +59,17 @@
     .notes {
       font-size: 14px;
       color: #444;
-      flex: 1;
+    }
+    .photos-link {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+    .photos-link a {
+      color: #999;
+      text-decoration: none;
+    }
+    .photos-link a:hover {
+      text-decoration: underline;
     }
     .small {
       font-size: 12px;
@@ -101,9 +88,6 @@
     <h2>Itinerary</h2>
     <ul class="stop-list">
       <li class="stop">
-        <div class="thumb">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" alt="Hotel / city morning" />
-        </div>
         <div class="time">12:30 – leave hotel</div>
         <div class="title">
           <a href="https://www.google.com/maps/search/?api=1&query=Crowne%20Plaza%20Copenhagen%20Towers%20Orestads%20Boulevard%20114%20118%202300%20Copenhagen" target="_blank" rel="noopener noreferrer">
@@ -114,9 +98,6 @@
       </li>
 
       <li class="stop">
-        <div class="thumb">
-          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" alt="Brunch food" />
-        </div>
         <div class="time">13:00 – lunch</div>
         <div class="title">
           <a href="https://www.google.com/maps/search/?api=1&query=Mad%20%26%20Kaffe%20S%C3%B8nder%20Boulevard%2068%201720%20Copenhagen" target="_blank" rel="noopener noreferrer">
@@ -124,12 +105,10 @@
           </a>
         </div>
         <div class="notes">Brunch-style plates on Sønder Boulevard. Young local crowd, good first stop after landing.</div>
+        <div class="photos-link"><a href="https://www.google.com/maps/place/Mad+%26+Kaffe/@55.6667,12.5468,17z" target="_blank" rel="noopener noreferrer">View photos on Google Maps</a></div>
       </li>
 
       <li class="stop">
-        <div class="thumb">
-          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Street with trees" />
-        </div>
         <div class="time">14:15 – 15:00 – walk &amp; explore</div>
         <div class="title">
           <a href="https://www.google.com/maps/search/?api=1&query=S%C3%B8nder%20Boulevard%201720%20Copenhagen" target="_blank" rel="noopener noreferrer">
@@ -140,9 +119,6 @@
       </li>
 
       <li class="stop">
-        <div class="thumb">
-          <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80" alt="Coffee bar" />
-        </div>
         <div class="time">15:00 – coffee</div>
         <div class="title">
           <a href="https://www.google.com/maps/search/?api=1&query=Prolog%20Coffee%20Fl%C3%A6sketorvet%2010%201711%20Copenhagen" target="_blank" rel="noopener noreferrer">
@@ -150,12 +126,10 @@
           </a>
         </div>
         <div class="notes">Third‑wave coffee in the Meatpacking District. Good reset before heading to Nørrebro.</div>
+        <div class="photos-link"><a href="https://www.google.com/maps/place/Prolog+Coffee+Bar/@55.6683,12.5580,17z" target="_blank" rel="noopener noreferrer">View photos on Google Maps</a></div>
       </li>
 
       <li class="stop">
-        <div class="thumb">
-          <img src="https://images.unsplash.com/photo-1526481280695-3c687fd543c0?auto=format&fit=crop&w=800&q=80" alt="Hip street with shops" />
-        </div>
         <div class="time">15:45 – 17:30 – Nørrebro wandering</div>
         <div class="title">
           <a href="https://www.google.com/maps/search/?api=1&query=J%C3%A6gersborggade%202200%20Copenhagen" target="_blank" rel="noopener noreferrer">
@@ -166,9 +140,6 @@
       </li>
 
       <li class="stop">
-        <div class="thumb">
-          <img src="https://images.unsplash.com/photo-1495195134817-aeb325a55b65?auto=format&fit=crop&w=800&q=80" alt="Wine bar" />
-        </div>
         <div class="time">18:30 – wine</div>
         <div class="title">
           <a href="https://www.google.com/maps/search/?api=1&query=Pompette%20M%C3%B8llegade%203%202200%20Copenhagen" target="_blank" rel="noopener noreferrer">
@@ -176,12 +147,10 @@
           </a>
         </div>
         <div class="notes">Natural wine bar, relaxed and busy. Settle in here before cocktails.</div>
+        <div class="photos-link"><a href="https://www.google.com/maps/place/Pompette/@55.6925,12.5493,17z" target="_blank" rel="noopener noreferrer">View photos on Google Maps</a></div>
       </li>
 
       <li class="stop">
-        <div class="thumb">
-          <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80" alt="Cocktail bar" />
-        </div>
         <div class="time">20:00 – cocktails</div>
         <div class="title">
           <a href="https://www.google.com/maps/search/?api=1&query=The%20Barking%20Dog%20Sankt%20Hans%20Gade%2019%202200%20Copenhagen" target="_blank" rel="noopener noreferrer">
@@ -189,12 +158,10 @@
           </a>
         </div>
         <div class="notes">Pub‑feel cocktail bar. Easy, unpretentious, lots of young people.</div>
+        <div class="photos-link"><a href="https://www.google.com/maps/place/The+Barking+Dog/@55.6904,12.5561,17z" target="_blank" rel="noopener noreferrer">View photos on Google Maps</a></div>
       </li>
 
       <li class="stop">
-        <div class="thumb">
-          <img src="https://images.unsplash.com/photo-1521185496955-15097b20c5fe?auto=format&fit=crop&w=800&q=80" alt="Metro at night" />
-        </div>
         <div class="time">~22:00 – head back</div>
         <div class="title">
           <a href="https://www.google.com/maps/search/?api=1&query=%C3%98restad%20Station%20Copenhagen" target="_blank" rel="noopener noreferrer">
@@ -206,7 +173,7 @@
     </ul>
 
     <p class="small">
-      Tip: on your phone, tap any place name to open it in Google Maps, then "Save" it into a list so you can see everything on one map.
+      Tip: on your phone, tap any place name or "View photos" link to open it in Google Maps. Save the places into a list so you can see everything on one map.
     </p>
   </div>
 </body>
