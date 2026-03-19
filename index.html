@@ -1,468 +1,931 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Copenhagen – Day 1 Itinerary</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Copenhagen – Day 1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-    html, body {
+    :root {
+      --bg: #f5f0e8;
+      --bg2: #ede7db;
+      --surface: #ffffff;
+      --border: #d4cec2;
+      --border-light: #e6e0d4;
+      --text: #1a1a1a;
+      --text-dim: #6b6560;
+      --text-light: #8a847c;
+      --accent: #c0392b;
+      --accent-soft: #e8d5d2;
+      --blue: #2a6496;
+      --blue-soft: #d4e3f0;
+      --green: #1d7a5f;
+      --green-soft: #d0ece3;
+      --amber: #b8860b;
+      --amber-soft: #f0e6cc;
+      --purple: #6c4fa0;
+      --purple-soft: #e4ddf0;
+      --pink: #a44a6f;
+      --pink-soft: #f0d8e4;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-lg: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #fafafa;
-      color: #222;
+      box-sizing: border-box;
     }
-    .page {
-      max-width: 960px;
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Instrument Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .hero {
+      background: var(--text);
+      color: var(--bg);
+      padding: 3rem 1.5rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(192,57,43,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 30%, rgba(42,100,150,0.10) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 720px;
       margin: 0 auto;
-      padding: 16px;
+      position: relative;
+      z-index: 1;
     }
-    h1 {
-      font-size: 24px;
-      margin-bottom: 4px;
+
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.5);
+      margin-bottom: 0.75rem;
     }
-    h2 {
-      font-size: 18px;
-      margin-top: 24px;
-      margin-bottom: 8px;
+
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.2rem, 6vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.6rem;
     }
-    .meta {
-      font-size: 13px;
-      color: #777;
-      margin-bottom: 16px;
+
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(245,240,232,0.7);
+      max-width: 520px;
+      line-height: 1.5;
     }
-    .stop-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
     }
-    .stop {
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
+
+    .hero-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      padding: 0.3rem 0.65rem;
+      border: 1px solid rgba(245,240,232,0.25);
+      border-radius: 999px;
+      color: rgba(245,240,232,0.85);
+      letter-spacing: 0.03em;
     }
-    .time {
-      font-size: 13px;
-      color: #555;
-      margin-bottom: 2px;
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(245,240,232,0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
-    .title {
+
+    .nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+    }
+
+    .nav a {
+      font-size: 0.78rem;
       font-weight: 600;
-      margin-bottom: 4px;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 0.75rem 0.9rem;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
     }
-    .title a {
-      color: #0869ff;
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--text);
+      border-bottom-color: var(--accent);
+    }
+
+    .main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    .timeline-section {
+      padding-top: 2.5rem;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2.75rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .stop {
+      position: relative;
+      margin-bottom: 1.75rem;
+    }
+
+    .stop:last-child {
+      margin-bottom: 0;
+    }
+
+    .stop-dot {
+      position: absolute;
+      left: -2.75rem;
+      top: 4px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .stop-dot-inner {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .stop:hover .stop-dot {
+      border-color: var(--accent);
+      transform: scale(1.1);
+    }
+
+    .stop:hover .stop-dot-inner {
+      opacity: 1;
+    }
+
+    .stop-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-light);
+      letter-spacing: 0.03em;
+      margin-bottom: 0.2rem;
+    }
+
+    .stop-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .stop-name a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .stop-name a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .stop-desc {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.55;
+    }
+
+    .stop-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+      margin-top: 0.35rem;
+      transition: opacity 0.2s;
+    }
+
+    .stop-link:hover {
+      opacity: 0.7;
+    }
+
+    .cards-section {
+      padding-top: 2.5rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 1rem 1.15rem;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-1px);
+    }
+
+    .card-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .card-name a {
+      color: var(--text);
       text-decoration: none;
     }
-    .title a:hover {
-      text-decoration: underline;
+
+    .card-name a:hover {
+      color: var(--accent);
     }
-    .notes {
-      font-size: 14px;
-      color: #444;
+
+    .card-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 500;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-left: 0.4rem;
+      vertical-align: middle;
     }
-    .photos-link {
-      font-size: 12px;
-      margin-top: 4px;
+
+    .badge-vesterbro { background: var(--accent-soft); color: var(--accent); }
+    .badge-norrebro { background: var(--blue-soft); color: var(--blue); }
+    .badge-city { background: var(--green-soft); color: var(--green); }
+    .badge-osterbro { background: var(--amber-soft); color: var(--amber); }
+    .badge-refshaleoen { background: var(--amber-soft); color: var(--amber); }
+    .badge-various { background: var(--pink-soft); color: var(--pink); }
+    .badge-daytrip { background: var(--purple-soft); color: var(--purple); }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.5;
     }
-    .photos-link a {
-      color: #999;
-      text-decoration: none;
+
+    .collapsible {
+      padding-top: 2.5rem;
     }
-    .photos-link a:hover {
-      text-decoration: underline;
+
+    .collapse-trigger {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      transition: background 0.2s;
+      text-align: left;
     }
-    .small {
-      font-size: 12px;
-      color: #777;
-      margin-top: 16px;
+
+    .collapse-trigger:hover {
+      background: var(--bg2);
+    }
+
+    .collapse-arrow {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      transition: transform 0.3s;
+    }
+
+    .collapse-trigger.open .collapse-arrow {
+      transform: rotate(180deg);
+    }
+
+    .collapse-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .collapse-body.open {
+      max-height: 5000px;
+    }
+
+    .collapse-inner {
+      padding-top: 0.75rem;
+    }
+
+    .mini {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 1.15rem 1.25rem;
+      margin-bottom: 0.75rem;
+      box-shadow: var(--shadow);
+    }
+
+    .mini-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .mini-flow {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.55;
+    }
+
+    .mini-flow .arrow {
+      color: var(--accent);
+      margin: 0 0.25rem;
+      font-weight: 700;
+    }
+
+    .tip {
+      background: var(--green-soft);
+      border: 1px solid rgba(29,122,95,0.2);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-top: 2.5rem;
+      font-size: 0.88rem;
+      color: var(--green);
+      line-height: 1.55;
+    }
+
+    .tip strong {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.25rem;
+    }
+
+    .footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.8rem;
+    }
+
+    @media (min-width: 520px) {
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero {
+        padding: 2.5rem 1.25rem 2rem;
+      }
+      .main {
+        padding: 0 1.25rem 3rem;
+      }
+      .nav {
+        padding: 0 1rem;
+      }
+      .nav a {
+        padding: 0.65rem 0.7rem;
+        font-size: 0.72rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <h1>Copenhagen – Day 1 (Vesterbro → City → Nørrebro loop)</h1>
-    <div class="meta">
-      Crowne Plaza Copenhagen Towers base · Thu 19 Mar · Cafes, bars, young/hipster areas · One clean loop (no backtracking)
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Thu 19 Mar 2026</div>
+      <h1>Copenhagen<br />Day 1</h1>
+      <p class="hero-sub">
+        Vesterbro → City Centre → Nørrebro loop. One clean route, no backtracking. From Crowne Plaza Towers, Ørestad.
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">Cafes</span>
+        <span class="hero-tag">Bars</span>
+        <span class="hero-tag">Young / Hipster</span>
+        <span class="hero-tag">Walkable</span>
+      </div>
     </div>
+  </header>
 
-    <h2>Main route</h2>
-    <ul class="stop-list">
-      <li class="stop">
-        <div class="time">12:30 – leave hotel</div>
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=Crowne%20Plaza%20Copenhagen%20Towers%20Orestads%20Boulevard%20114%20118%202300%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Crowne Plaza Copenhagen Towers (Ørestad)
-          </a>
-        </div>
-        <div class="notes">Base. Walk to Ørestad Station and head into the city on Metro M1.</div>
-      </li>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#route" class="active">Route</a>
+      <a href="#landmarks">Landmarks</a>
+      <a href="#cafes">Cafes</a>
+      <a href="#bars">Bars</a>
+      <a href="#eat">Eat</a>
+      <a href="#visit">Visit</a>
+      <a href="#do">Do</a>
+      <a href="#mini">Mini Routes</a>
+    </div>
+  </nav>
 
-      <li class="stop">
-        <div class="time">~13:00 – lunch</div>
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=Mad%20%26%20Kaffe%20S%C3%B8nder%20Boulevard%2068%201720%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Mad &amp; Kaffe (Vesterbro)
-          </a>
+  <main class="main">
+    <!-- MAIN ROUTE -->
+    <section class="timeline-section" id="route">
+      <h2 class="section-title">
+        <span class="section-icon" style="background:var(--accent-soft);color:var(--accent);">↓</span>
+        Main Route
+      </h2>
+      <div class="timeline">
+        <div class="stop">
+          <div class="stop-dot"><span class="stop-dot-inner"></span></div>
+          <div class="stop-time">12:30</div>
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/search/?api=1&query=Crowne%20Plaza%20Copenhagen%20Towers%20Orestads%20Boulevard%20114%20118%202300%20Copenhagen" target="_blank" rel="noopener noreferrer">Crowne Plaza Copenhagen Towers</a>
+          </div>
+          <div class="stop-desc">Base. Walk to Ørestad Station → Metro M1 into the city.</div>
         </div>
-        <div class="notes">Brunch-style plates on Sønder Boulevard. Young local crowd, good first stop after landing.</div>
-        <div class="photos-link"><a href="https://www.google.com/maps/place/Mad+%26+Kaffe/@55.6667,12.5468,17z" target="_blank" rel="noopener noreferrer">View photos on Google Maps</a></div>
-      </li>
 
-      <li class="stop">
-        <div class="time">14:00 – Vesterbro walk + coffee</div>
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=Prolog%20Coffee%20Fl%C3%A6sketorvet%2010%201711%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Sønder Boulevard → Meatpacking (Kødbyen) → Prolog Coffee Bar
-          </a>
+        <div class="stop">
+          <div class="stop-dot"><span class="stop-dot-inner"></span></div>
+          <div class="stop-time">~13:00</div>
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/search/?api=1&query=Mad%20%26%20Kaffe%20S%C3%B8nder%20Boulevard%2068%201720%20Copenhagen" target="_blank" rel="noopener noreferrer">Mad &amp; Kaffe</a>
+            <span class="card-badge badge-vesterbro">Vesterbro</span>
+          </div>
+          <div class="stop-desc">Brunch-style plates on Sønder Boulevard. Young local crowd, good first stop after landing.</div>
+          <a class="stop-link" href="https://www.google.com/maps/place/Mad+%26+Kaffe/@55.6667,12.5468,17z" target="_blank" rel="noopener noreferrer">↗ View on Maps</a>
         </div>
-        <div class="notes">Slow walk along Sønder Boulevard, then drift into Kødbyen. Grab third‑wave coffee at Prolog in the Meatpacking District.</div>
-        <div class="photos-link"><a href="https://www.google.com/maps/place/Prolog+Coffee+Bar/@55.6683,12.5580,17z" target="_blank" rel="noopener noreferrer">View Prolog on Maps</a></div>
-      </li>
 
-      <li class="stop">
-        <div class="time">15:30 – 17:30 – City centre + Nyhavn cluster</div>
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=Nyhavn%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Strøget, Christiansborg Tower, Nyhavn, Amalienborg, Little Mermaid (optional)
-          </a>
+        <div class="stop">
+          <div class="stop-dot"><span class="stop-dot-inner"></span></div>
+          <div class="stop-time">14:00</div>
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/search/?api=1&query=Prolog%20Coffee%20Fl%C3%A6sketorvet%2010%201711%20Copenhagen" target="_blank" rel="noopener noreferrer">Sønder Boulevard → Kødbyen → Prolog Coffee</a>
+          </div>
+          <div class="stop-desc">Slow walk along Sønder Boulevard, drift into the Meatpacking District. Third‑wave coffee at Prolog.</div>
+          <a class="stop-link" href="https://www.google.com/maps/place/Prolog+Coffee+Bar/@55.6683,12.5580,17z" target="_blank" rel="noopener noreferrer">↗ View Prolog</a>
         </div>
-        <div class="notes">From Vesterbro, head via København H into the old town. Walk Strøget, take the free view from Christiansborg Tower if you want, then Nyhavn and Amalienborg. If you still have legs, do the Little Mermaid loop and come back via the harbour.</div>
-      </li>
 
-      <li class="stop">
-        <div class="time">~17:30 – 19:00 – Nørrebro walk</div>
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=J%C3%A6gersborggade%202200%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Lakes / Dronning Louises Bro → Jægersborggade
-          </a>
+        <div class="stop">
+          <div class="stop-dot"><span class="stop-dot-inner"></span></div>
+          <div class="stop-time">15:30 – 17:30</div>
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/search/?api=1&query=Nyhavn%20Copenhagen" target="_blank" rel="noopener noreferrer">City Centre + Nyhavn cluster</a>
+            <span class="card-badge badge-city">City</span>
+          </div>
+          <div class="stop-desc">From Vesterbro via København H into old town. Walk Strøget, free view from Christiansborg Tower, then Nyhavn and Amalienborg. Little Mermaid loop if you still have legs.</div>
         </div>
-        <div class="notes">Metro or walk up to Nørrebro. Cross the Lakes via Dronning Louises Bro, then wander Jægersborggade for shops and cafes.</div>
-      </li>
 
-      <li class="stop">
-        <div class="time">19:00 – wine</div>
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=Pompette%20M%C3%B8llegade%203%202200%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Pompette (natural wine, Nørrebro)
-          </a>
+        <div class="stop">
+          <div class="stop-dot"><span class="stop-dot-inner"></span></div>
+          <div class="stop-time">17:30 – 19:00</div>
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/search/?api=1&query=J%C3%A6gersborggade%202200%20Copenhagen" target="_blank" rel="noopener noreferrer">Lakes → Nørrebro → Jægersborggade</a>
+            <span class="card-badge badge-norrebro">Nørrebro</span>
+          </div>
+          <div class="stop-desc">Metro or walk up to Nørrebro. Cross the Lakes via Dronning Louises Bro, then wander Jægersborggade for shops and cafes.</div>
         </div>
-        <div class="notes">Natural wine bar, relaxed and busy. Good place to settle in before cocktails.</div>
-        <div class="photos-link"><a href="https://www.google.com/maps/place/Pompette/@55.6925,12.5493,17z" target="_blank" rel="noopener noreferrer">View photos on Google Maps</a></div>
-      </li>
 
-      <li class="stop">
-        <div class="time">20:30 – cocktails</div>
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=The%20Barking%20Dog%20Sankt%20Hans%20Gade%2019%202200%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            The Barking Dog (cocktail pub, Nørrebro)
-          </a>
+        <div class="stop">
+          <div class="stop-dot"><span class="stop-dot-inner"></span></div>
+          <div class="stop-time">19:00</div>
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/search/?api=1&query=Pompette%20M%C3%B8llegade%203%202200%20Copenhagen" target="_blank" rel="noopener noreferrer">Pompette</a>
+            <span class="card-badge badge-norrebro">Nørrebro</span>
+          </div>
+          <div class="stop-desc">Natural wine bar, relaxed and busy. Good place to settle in before cocktails.</div>
+          <a class="stop-link" href="https://www.google.com/maps/place/Pompette/@55.6925,12.5493,17z" target="_blank" rel="noopener noreferrer">↗ View on Maps</a>
         </div>
-        <div class="notes">Pub‑feel cocktail bar. Easy, unpretentious, lots of young people. Stay here or hop to Pulp Bar if you want something more playful.</div>
-        <div class="photos-link"><a href="https://www.google.com/maps/place/The+Barking+Dog/@55.6904,12.5561,17z" target="_blank" rel="noopener noreferrer">View photos on Google Maps</a></div>
-      </li>
 
-      <li class="stop">
-        <div class="time">~22:00 – back to hotel</div>
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=%C3%98restad%20Station%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Nørrebro → Ørestad Station → Crowne Plaza
-          </a>
+        <div class="stop">
+          <div class="stop-dot"><span class="stop-dot-inner"></span></div>
+          <div class="stop-time">20:30</div>
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/search/?api=1&query=The%20Barking%20Dog%20Sankt%20Hans%20Gade%2019%202200%20Copenhagen" target="_blank" rel="noopener noreferrer">The Barking Dog</a>
+            <span class="card-badge badge-norrebro">Nørrebro</span>
+          </div>
+          <div class="stop-desc">Pub‑feel cocktail bar. Easy, unpretentious, lots of young people. Or hop to Pulp Bar for something more playful.</div>
+          <a class="stop-link" href="https://www.google.com/maps/place/The+Barking+Dog/@55.6904,12.5561,17z" target="_blank" rel="noopener noreferrer">↗ View on Maps</a>
         </div>
-        <div class="notes">From Nørrebro St. or Nørreport, metro back to Ørestad (M3/M4 → M1). Short walk from Ørestad station to the hotel.</div>
-      </li>
-    </ul>
 
-    <h2>Optional free landmarks (anytime in the centre block)</h2>
-    <ul class="stop-list">
-      <li class="stop">
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=Nyhavn%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Nyhavn (colourful harbour)
-          </a>
+        <div class="stop">
+          <div class="stop-dot"><span class="stop-dot-inner"></span></div>
+          <div class="stop-time">~22:00</div>
+          <div class="stop-name">
+            <a href="https://www.google.com/maps/search/?api=1&query=%C3%98restad%20Station%20Copenhagen" target="_blank" rel="noopener noreferrer">Back to hotel</a>
+          </div>
+          <div class="stop-desc">From Nørrebro St. or Nørreport, metro back to Ørestad (M3/M4 → M1). Short walk to Crowne Plaza.</div>
         </div>
-        <div class="notes">17th-century waterfront with brightly coloured townhouses. Free to walk, very touristy but pretty.</div>
-      </li>
-      <li class="stop">
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=The%20Little%20Mermaid%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            The Little Mermaid statue
-          </a>
-        </div>
-        <div class="notes">Small bronze statue on the waterfront. Touristy but iconic. About 15 min walk from Nyhavn.</div>
-      </li>
-      <li class="stop">
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=Amalienborg%20Palace%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Amalienborg Palace (changing of guard)
-          </a>
-        </div>
-        <div class="notes">Royal palace with four identical buildings. Changing of guard at 12:00 daily. Free to watch from the square.</div>
-      </li>
-      <li class="stop">
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=Str%C3%B8get%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Strøget (pedestrian shopping street)
-          </a>
-        </div>
-        <div class="notes">One of Europe's longest pedestrian streets. Free to walk, lots of shops and street performers.</div>
-      </li>
-      <li class="stop">
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=Christiansborg%20Palace%20Tower%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Christiansborg Palace Tower (free view)
-          </a>
-        </div>
-        <div class="notes">Free elevator to the tower for panoramic city views. Usually open until 21:00. Queue can be long but worth it.</div>
-      </li>
-    </ul>
+      </div>
+    </section>
 
-    <h2>More cafes like Mad &amp; Kaffe</h2>
-    <ul class="stop-list">
-      <li class="stop">
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=Cadence%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Cadence (Vesterbro)
-          </a>
-        </div>
-        <div class="notes">Creative, chef-y brunch plates in a leafy, light space. Very similar energy to Mad &amp; Kaffe.</div>
-      </li>
-      <li class="stop">
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=Sixteen%20Twelve%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Sixteen Twelve (Nørrebro, Jægersborggade)
-          </a>
-        </div>
-        <div class="notes">“Next-level” brunch with twists on classics, cool interiors, same kind of crowd as Mad &amp; Kaffe.</div>
-      </li>
-      <li class="stop">
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=Sidecar%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Sidecar (Nørrebro)
-          </a>
-        </div>
-        <div class="notes">Cosy, hygge brunch spot with brunch boards and a busy, young vibe. Good backup if Mad &amp; Kaffe is slammed.</div>
-      </li>
-      <li class="stop">
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=Wulff%20%26%20Konstali%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Wulff &amp; Konstali
-          </a>
-        </div>
-        <div class="notes">Instagram brunch boards (pick small dishes), very similar build-your-own style to Mad &amp; Kaffe.</div>
-      </li>
-    </ul>
+    <!-- LANDMARKS -->
+    <section class="cards-section" id="landmarks">
+      <h2 class="section-title">
+        <span class="section-icon" style="background:var(--blue-soft);color:var(--blue);">✦</span>
+        Free landmarks (centre block)
+      </h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Nyhavn%20Copenhagen" target="_blank" rel="noopener noreferrer">Nyhavn</a></div>
+          <div class="card-desc">17th‑century waterfront with colourful houses and boats. Very touristy but still pretty; easy to combine with canal tour.</div>
+        </article>
+        <article class="card">
+          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=The%20Little%20Mermaid%20Copenhagen" target="_blank" rel="noopener noreferrer">The Little Mermaid</a></div>
+          <div class="card-desc">Small bronze statue on the waterfront. Iconic, not huge – treat it as a bonus on a harbour walk, not the main event.</div>
+        </article>
+        <article class="card">
+          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Amalienborg%20Palace%20Copenhagen" target="_blank" rel="noopener noreferrer">Amalienborg Palace</a></div>
+          <div class="card-desc">Royal square with four identical palaces. Changing of the guard at noon; easy to swing past between Nyhavn and the harbour.</div>
+        </article>
+        <article class="card">
+          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Str%C3%B8get%20Copenhagen" target="_blank" rel="noopener noreferrer">Strøget</a></div>
+          <div class="card-desc">Pedestrian shopping street running across the old town. Free to walk, full of shops and street performers.</div>
+        </article>
+        <article class="card">
+          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Christiansborg%20Palace%20Tower%20Copenhagen" target="_blank" rel="noopener noreferrer">Christiansborg Palace Tower</a></div>
+          <div class="card-desc">Free elevator to a panoramic city view. Usually open late; queues can be long but the view is worth it.</div>
+        </article>
+      </div>
+    </section>
 
-    <h2>Hidden / speakeasy-ish bars</h2>
-    <ul class="stop-list">
-      <li class="stop">
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=Curfew%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Curfew (Vesterbro)
-          </a>
-        </div>
-        <div class="notes">Speakeasy-style cocktail bar with library entrance and 1920s/30s vibe; buzzer and reservations recommended.</div>
-      </li>
-      <li class="stop">
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=Lidkoeb%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Lidkoeb (Vesterbro)
-          </a>
-        </div>
-        <div class="notes">Backyard entrance and top-floor whisky lounge give it hidden-bar energy.</div>
-      </li>
-      <li class="stop">
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=The%20Union%20Local%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            The Union Local (near Nyhavn)
-          </a>
-        </div>
-        <div class="notes">Small, dimly lit, speakeasy-feel sister bar to The Union Kitchen; very cocktail-focused.</div>
-      </li>
-      <li class="stop">
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=1656%20Cocktail%20Bar%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            1656 Cocktail Bar (Vesterbro)
-          </a>
-        </div>
-        <div class="notes">Graffiti-covered exterior, cosy interior, strong seasonal cocktail list.</div>
-      </li>
-      <li class="stop">
-        <div class="title">
-          <a href="https://www.google.com/maps/search/?api=1&query=Pulp%20Bar%20Copenhagen" target="_blank" rel="noopener noreferrer">
-            Pulp Bar (Nørrebro)
-          </a>
-        </div>
-        <div class="notes">Playful, retro speakeasy-ish bar with colourful drinks and a young local crowd.</div>
-      </li>
-    </ul>
+    <!-- CAFES LIKE MAD & KAFFE -->
+    <section class="cards-section" id="cafes">
+      <h2 class="section-title">
+        <span class="section-icon" style="background:var(--green-soft);color:var(--green);">☕</span>
+        More cafes like Mad &amp; Kaffe
+      </h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card-name">
+            <a href="https://www.google.com/maps/search/?api=1&query=Cadence%20Copenhagen" target="_blank" rel="noopener noreferrer">Cadence</a>
+            <span class="card-badge badge-vesterbro">Vesterbro</span>
+          </div>
+          <div class="card-desc">Chef‑y brunch plates in a leafy, light space. Very similar build‑your‑own vibe to Mad &amp; Kaffe.</div>
+        </article>
+        <article class="card">
+          <div class="card-name">
+            <a href="https://www.google.com/maps/search/?api=1&query=Sixteen%20Twelve%20Copenhagen" target="_blank" rel="noopener noreferrer">Sixteen Twelve</a>
+            <span class="card-badge badge-norrebro">Nørrebro</span>
+          </div>
+          <div class="card-desc">Brunch with twists on classics on Jægersborggade. Same young/hipster energy, different dishes.</div>
+        </article>
+        <article class="card">
+          <div class="card-name">
+            <a href="https://www.google.com/maps/search/?api=1&query=Sidecar%20Copenhagen" target="_blank" rel="noopener noreferrer">Sidecar</a>
+            <span class="card-badge badge-norrebro">Nørrebro</span>
+          </div>
+          <div class="card-desc">Cosy, hygge brunch spot with brunch boards and a busy, young crowd.</div>
+        </article>
+        <article class="card">
+          <div class="card-name">
+            <a href="https://www.google.com/maps/search/?api=1&query=Wulff%20%26%20Konstali%20Copenhagen" target="_blank" rel="noopener noreferrer">Wulff &amp; Konstali</a>
+            <span class="card-badge badge-various">Various</span>
+          </div>
+          <div class="card-desc">Instagram‑famous brunch boards where you pick several small dishes – very close in spirit to Mad &amp; Kaffe.</div>
+        </article>
+      </div>
+    </section>
 
-    <h2>Where to eat (2024–26 highlights)</h2>
-    <ul class="stop-list">
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Bar+Vitrine+Copenhagen" target="_blank" rel="noopener noreferrer">Bar Vitrine (Indre By)</a></div>
-        <div class="notes">Tiny natural‑wine bar and small‑plates spot by a former Noma chef. Good for a special but not stuffy dinner.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+Gazou+Copenhagen" target="_blank" rel="noopener noreferrer">Café Gazou (Nordvest)</a></div>
-        <div class="notes">French‑leaning neighborhood café/bistro; relaxed, local, simple seasonal dishes.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Graziano+Copenhagen" target="_blank" rel="noopener noreferrer">Graziano (Nørrebro)</a></div>
-        <div class="notes">Rustic Tuscan trattoria – big bowls of pasta, stews, and a buzzy room.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Texture+Restaurant+Copenhagen" target="_blank" rel="noopener noreferrer">Texture (city centre)</a></div>
-        <div class="notes">New Michelin‑star basement dining room; French‑ish tasting menu, moody and polished.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Koan+Copenhagen" target="_blank" rel="noopener noreferrer">Koan (Carlsberg Byen)</a></div>
-        <div class="notes">Two‑star Danish‑Korean tasting menu. Very “big night out” if you want something ambitious.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Reffen+Street+Food+Copenhagen" target="_blank" rel="noopener noreferrer">Reffen (Refshaleøen)</a></div>
-        <div class="notes">Huge outdoor street‑food market by the harbor. Perfect for a casual afternoon/evening when the weather is decent.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Torvehallerne+KBH" target="_blank" rel="noopener noreferrer">TorvehallerneKBH (near Nørreport)</a></div>
-        <div class="notes">Glass‑covered food halls: smørrebrød, tacos, coffee, and specialty groceries. Good grazing stop near the station.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Broens+Gadek%C3%B8kken" target="_blank" rel="noopener noreferrer">Broens Street Food (bridge to Christianshavn)</a></div>
-        <div class="notes">Smaller waterfront street‑food court. Easy win after Nyhavn / city‑center sightseeing.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Juno+the+Bakery" target="_blank" rel="noopener noreferrer">Juno the Bakery (Østerbro)</a></div>
-        <div class="notes">Cardamom buns and croissants worth queuing for. Go early or be patient.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Hart+Bageri+Copenhagen" target="_blank" rel="noopener noreferrer">Hart Bageri (various)</a></div>
-        <div class="notes">Ex‑Noma bakery; benchmark sourdough and pastries. Several branches around town.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Lille+Bakery+Copenhagen" target="_blank" rel="noopener noreferrer">Lille Bakery (Refshaleøen)</a></div>
-        <div class="notes">Bakery–café in an old industrial hall; good brunch plates and bread, close to Reffen.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Slurp+Ramen+Joint+Copenhagen" target="_blank" rel="noopener noreferrer">Slurp Ramen Joint (Nørrebro)</a></div>
-        <div class="notes">Tiny, always‑busy ramen bar. Great cold‑weather backup.</div>
-      </li>
-    </ul>
+    <!-- HIDDEN / SPEAKEASY BARS -->
+    <section class="cards-section" id="bars">
+      <h2 class="section-title">
+        <span class="section-icon" style="background:var(--purple-soft);color:var(--purple);">★</span>
+        Hidden / speakeasy‑ish bars
+      </h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Curfew%20Copenhagen" target="_blank" rel="noopener noreferrer">Curfew</a></div>
+          <div class="card-desc">Speakeasy‑style cocktail bar with a library entrance and 1920s/30s vibe. Ring the buzzer; book if you care about seats.</div>
+        </article>
+        <article class="card">
+          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Lidkoeb%20Copenhagen" target="_blank" rel="noopener noreferrer">Lidkoeb</a></div>
+          <div class="card-desc">Hidden in a backyard in Vesterbro with a top‑floor whisky lounge – feels like a townhouse you stumble into.</div>
+        </article>
+        <article class="card">
+          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=The%20Union%20Local%20Copenhagen" target="_blank" rel="noopener noreferrer">The Union Local</a></div>
+          <div class="card-desc">Small, dimly lit sister bar to The Union Kitchen, just off Nyhavn. Proper speakeasy feel and strong cocktails.</div>
+        </article>
+        <article class="card">
+          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=1656%20Cocktail%20Bar%20Copenhagen" target="_blank" rel="noopener noreferrer">1656 Cocktail Bar</a></div>
+          <div class="card-desc">Graffiti‑covered exterior, cosy interior, seasonal cocktail list. Feels like you’ve found a secret.</div>
+        </article>
+        <article class="card">
+          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Pulp%20Bar%20Copenhagen" target="_blank" rel="noopener noreferrer">Pulp Bar</a></div>
+          <div class="card-desc">Playful, retro bar in Nørrebro with colourful drinks and a young local crowd.</div>
+        </article>
+      </div>
+    </section>
 
-    <h2>Where to visit (neighbourhoods, parks, museums)</h2>
-    <ul class="stop-list">
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Nyhavn+Copenhagen" target="_blank" rel="noopener noreferrer">Nyhavn &amp; canal area</a></div>
-        <div class="notes">Classic colourful harbour. Stick to the side opposite the bars for better photos; combine with a canal tour.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=SMK+Statens+Museum+for+Kunst" target="_blank" rel="noopener noreferrer">SMK – National Gallery of Denmark</a></div>
-        <div class="notes">Big airy art museum with Danish + European collections. Good rainy‑day option.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Ny+Carlsberg+Glyptotek" target="_blank" rel="noopener noreferrer">Ny Carlsberg Glyptotek</a></div>
-        <div class="notes">Palm‑filled winter garden, sculpture, and Impressionists right by Tivoli. Very atmospheric.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Designmuseum+Danmark" target="_blank" rel="noopener noreferrer">Designmuseum Danmark</a></div>
-        <div class="notes">Danish chairs, lamps, and everyday design. If you like interiors, this is mandatory.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Danish+Architecture+Center+BLOX" target="_blank" rel="noopener noreferrer">Danish Architecture Center (DAC) &amp; BLOX</a></div>
-        <div class="notes">Architecture &amp; city‑making exhibitions in a bold waterfront building. Nice harbour views and café.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Operaparken+Copenhagen" target="_blank" rel="noopener noreferrer">Operaparken</a></div>
-        <div class="notes">Brand‑new park next to the Opera House with layered landscaping and harbour views back to the city.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Superkilen+Park" target="_blank" rel="noopener noreferrer">Superkilen Park (Nørrebro)</a></div>
-        <div class="notes">Colourful, design‑heavy urban park that shows off Copenhagen’s multicultural side.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Frederiksberg+Have" target="_blank" rel="noopener noreferrer">Frederiksberg Gardens</a></div>
-        <div class="notes">Big romantic park with canals and views into the zoo. Good chill day when you need trees.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=CopenHill+Amager+Bakke" target="_blank" rel="noopener noreferrer">CopenHill (Amager Bakke)</a></div>
-        <div class="notes">Ski slope / hiking trail on top of a waste‑to‑energy plant. Pure “future city” vibes with views back over Copenhagen.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Nordhavn+Konditaget+L%C3%BCders" target="_blank" rel="noopener noreferrer">Nordhavn &amp; Konditaget Lüders</a></div>
-        <div class="notes">New harbour district with a rooftop playground and skyline view; nice if you like urbanism and architecture.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Christiania+Copenhagen" target="_blank" rel="noopener noreferrer">Christianshavn &amp; Freetown Christiania</a></div>
-        <div class="notes">Pretty canals + alternative community with lots of street art and car‑free paths. Go in daylight, keep it respectful.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Louisiana+Museum+of+Modern+Art" target="_blank" rel="noopener noreferrer">Louisiana Museum of Modern Art (day trip)</a></div>
-        <div class="notes">World‑class modern art + sculpture park right on the sea. Easy train up the coast; worth half or full day.</div>
-      </li>
-    </ul>
+    <!-- WHERE TO EAT -->
+    <section class="collapsible" id="eat" data-collapse>
+      <button class="collapse-trigger" type="button">
+        <span>Where to eat (2024–26 highlights)</span>
+        <span class="collapse-arrow">▾</span>
+      </button>
+      <div class="collapse-body">
+        <div class="collapse-inner">
+          <div class="cards">
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Bar+Vitrine+Copenhagen" target="_blank" rel="noopener noreferrer">Bar Vitrine</a></div>
+              <div class="card-desc">Intimate natural‑wine bar and small‑plates restaurant in the centre. Newer opening with serious food and relaxed energy.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Caf%C3%A9+Gazou+Copenhagen" target="_blank" rel="noopener noreferrer">Café Gazou</a></div>
+              <div class="card-desc">French‑leaning neighbourhood café in Nordvest. Simple seasonal dishes, very local vibe.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Graziano+Copenhagen" target="_blank" rel="noopener noreferrer">Graziano</a></div>
+              <div class="card-desc">Tuscan trattoria in Nørrebro – comforting pastas and stews, generous portions, buzzy room.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Texture+Restaurant+Copenhagen" target="_blank" rel="noopener noreferrer">Texture</a></div>
+              <div class="card-desc">Moody basement fine‑dining spot with a Michelin star. French‑leaning tasting menu, very polished.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Koan+Copenhagen" target="_blank" rel="noopener noreferrer">Koan</a></div>
+              <div class="card-desc">Two‑star Danish‑Korean tasting menu in Carlsberg Byen. High‑concept, special‑occasion meal.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Reffen+Street+Food+Copenhagen" target="_blank" rel="noopener noreferrer">Reffen</a></div>
+              <div class="card-desc">Huge outdoor street‑food market on Refshaleøen – global stalls, harbour views, music. Go when it’s not freezing.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Torvehallerne+KBH" target="_blank" rel="noopener noreferrer">TorvehallerneKBH</a></div>
+              <div class="card-desc">Glass‑covered food halls by Nørreport – smørrebrød, tacos, coffee, and good grazing.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Juno+the+Bakery" target="_blank" rel="noopener noreferrer">Juno the Bakery</a></div>
+              <div class="card-desc">Cult bakery in Østerbro. Cardamom buns and croissants worth a small queue.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Hart+Bageri" target="_blank" rel="noopener noreferrer">Hart Bageri</a></div>
+              <div class="card-desc">Ex‑Noma bakery with multiple branches. Sourdough and laminated pastries done properly.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Lille+Bakery" target="_blank" rel="noopener noreferrer">Lille Bakery</a></div>
+              <div class="card-desc">Bakery–café in an old industrial hall on Refshaleøen. Great bread and low‑key brunch plates.</div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <h2>Things to do (saunas, harbor, nightlife)</h2>
-    <ul class="stop-list">
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=CopenHot+Refshale%C3%B8en" target="_blank" rel="noopener noreferrer">CopenHot (Refshaleøen)</a></div>
-        <div class="notes">Wood‑fired hot tubs and saunas by the harbour. Alternate hot/cold with city views – especially good in cold months.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Sauna+House+Nordhavn" target="_blank" rel="noopener noreferrer">Sauna House (Nordhavn)</a></div>
-        <div class="notes">Design‑y sauna and harbour‑dip spot with guided <em>saunagus</em> sessions. Book ahead.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Islands+Brygge+Harbour+Baths" target="_blank" rel="noopener noreferrer">Islands Brygge Harbour Baths</a></div>
-        <div class="notes">Local swim + hangout zone. In summer it’s full of people swimming, sunning, and drinking beers on the grass.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Ruby+Cocktail+Bar+Copenhagen" target="_blank" rel="noopener noreferrer">Ruby (city centre cocktails)</a></div>
-        <div class="notes">Classic townhouse cocktail bar; perfect for a more grown‑up night.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Jolene+Bar+K%C3%B8dbyen" target="_blank" rel="noopener noreferrer">Jolene &amp; Kødbyen bars</a></div>
-        <div class="notes">Meatpacking District cluster of bars and casual clubs. Easy spot to end a night after dinner nearby.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=VEGA+concert+venue+Copenhagen" target="_blank" rel="noopener noreferrer">VEGA / Loppen / Byhaven (live music)</a></div>
-        <div class="notes">VEGA for bigger acts, Loppen in Christiania for gritty alt shows, Byhaven (summer) for free outdoor gigs at Pumpehuset.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Copenhagen+bike+tours" target="_blank" rel="noopener noreferrer">Guided bike tours</a></div>
-        <div class="notes">Easy way to get an overview of several neighbourhoods in a couple of hours, without planning your own route.</div>
-      </li>
-      <li class="stop">
-        <div class="title"><a href="https://www.google.com/maps/search/?api=1&query=Copenhagen+food+tour" target="_blank" rel="noopener noreferrer">Copenhagen food tours</a></div>
-        <div class="notes">Small‑group food walks (smørrebrød, pastries, cheese, beer). Good “Day 1” activity if you like context + snacking.</div>
-      </li>
-    </ul>
+    <!-- WHERE TO VISIT -->
+    <section class="collapsible" id="visit" data-collapse>
+      <button class="collapse-trigger" type="button">
+        <span>Where to visit (neighbourhoods, parks, museums)</span>
+        <span class="collapse-arrow">▾</span>
+      </button>
+      <div class="collapse-body">
+        <div class="collapse-inner">
+          <div class="cards">
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=SMK+Statens+Museum+for+Kunst" target="_blank" rel="noopener noreferrer">SMK – National Gallery of Denmark</a></div>
+              <div class="card-desc">Big airy art museum with Danish and European collections. Solid rainy‑day anchor.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Ny+Carlsberg+Glyptotek" target="_blank" rel="noopener noreferrer">Ny Carlsberg Glyptotek</a></div>
+              <div class="card-desc">Palm‑filled winter garden plus sculpture and Impressionists near Tivoli. Very atmospheric.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Designmuseum+Danmark" target="_blank" rel="noopener noreferrer">Designmuseum Danmark</a></div>
+              <div class="card-desc">Danish design museum – chairs, lamps, everyday objects. If you care about interiors, go.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Danish+Architecture+Center+BLOX" target="_blank" rel="noopener noreferrer">Danish Architecture Center (DAC) &amp; BLOX</a></div>
+              <div class="card-desc">Architecture and city‑making exhibitions in a bold waterfront building. Nice harbour views and café.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Operaparken" target="_blank" rel="noopener noreferrer">Operaparken</a></div>
+              <div class="card-desc">New park next to the opera with layered landscaping and views back to the city.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Superkilen+Park" target="_blank" rel="noopener noreferrer">Superkilen Park</a></div>
+              <div class="card-desc">Colourful, design‑heavy park in Nørrebro showing Copenhagen's multicultural side.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Frederiksberg+Have" target="_blank" rel="noopener noreferrer">Frederiksberg Gardens</a></div>
+              <div class="card-desc">Large romantic park with canals and views into the zoo. Good on a sunny slow day.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=CopenHill+Amager+Bakke" target="_blank" rel="noopener noreferrer">CopenHill (Amager Bakke)</a></div>
+              <div class="card-desc">Ski slope / hiking trail on top of a waste‑to‑energy plant. Outrageously "future city" and very fun photos.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Nordhavn+Konditaget+L%C3%BCders" target="_blank" rel="noopener noreferrer">Nordhavn &amp; Konditaget Lüders</a></div>
+              <div class="card-desc">New harbour district plus rooftop playground with skyline views. Catnip for architecture / urbanism people.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Louisiana+Museum+of+Modern+Art" target="_blank" rel="noopener noreferrer">Louisiana Museum of Modern Art (day trip)</a></div>
+              <div class="card-desc">Modern‑art museum and sculpture park right on the sea. Easy train up the coast; strong candidate for a half‑ or full‑day.</div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <h2>Mini itineraries (plug into any day)</h2>
-    <ul class="stop-list">
-      <li class="stop">
-        <div class="time">Harbour wellness &amp; industrial views</div>
-        <div class="notes">Afternoon walk/bike to Refshaleøen → CopenHot session → beers at Mikkeller Baghaven → optional food at Reffen.</div>
-      </li>
-      <li class="stop">
-        <div class="time">Nørrebro food + beer crawl</div>
-        <div class="notes">Jægersborggade shops/cafés → BRUS for beers + food → Kølsters Tolv Haner for a slower, local finish.</div>
-      </li>
-      <li class="stop">
-        <div class="time">Center: food tour → classic cocktails</div>
-        <div class="notes">Daytime food tour around the old town → free time in Torvehallerne → late‑night cocktail double at Ruby and Brønnum.</div>
-      </li>
-      <li class="stop">
-        <div class="time">Christiania &amp; a gig</div>
-        <div class="notes">Christianshavn canals → wander and dinner in Christiania or Broens Street Food → show at Loppen or another Christiania venue.</div>
-      </li>
-      <li class="stop">
-        <div class="time">Summer evening: swim → street food → Meatpacking</div>
-        <div class="notes">Swim/chill at Islands Brygge Harbour Baths → dinner at Broens Street Food → drinks and dancing in Kødbyen (Jolene, Bakken, etc.).</div>
-      </li>
-    </ul>
+    <!-- THINGS TO DO -->
+    <section class="collapsible" id="do" data-collapse>
+      <button class="collapse-trigger" type="button">
+        <span>Things to do (saunas, harbour, nightlife)</span>
+        <span class="collapse-arrow">▾</span>
+      </button>
+      <div class="collapse-body">
+        <div class="collapse-inner">
+          <div class="cards">
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=CopenHot+Refshale%C3%B8en" target="_blank" rel="noopener noreferrer">CopenHot</a></div>
+              <div class="card-desc">Wood‑fired hot tubs and saunas by the harbour on Refshaleøen. Alternate hot/cold with city views – especially good when it’s chilly.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Sauna+House+Nordhavn" target="_blank" rel="noopener noreferrer">Sauna House</a></div>
+              <div class="card-desc">Design‑y sauna + harbour‑dip spot in Nordhavn with guided <em>saunagus</em> sessions. Book slots.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Islands+Brygge+Harbour+Baths" target="_blank" rel="noopener noreferrer">Islands Brygge Harbour Baths</a></div>
+              <div class="card-desc">Local swim zone and lawn for hanging out with beers. Peak Copenhagen on a warm evening.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Ruby+Cocktail+Bar+Copenhagen" target="_blank" rel="noopener noreferrer">Ruby</a></div>
+              <div class="card-desc">Townhouse cocktail bar in the city centre. Polished but not stiff – good for date‑night energy.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Jolene+Bar+K%C3%B8dbyen" target="_blank" rel="noopener noreferrer">Jolene &amp; Kødbyen bars</a></div>
+              <div class="card-desc">Meatpacking District cluster of bars and casual clubs. Easy late‑night finish after dinner there or nearby.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=VEGA+concert+venue+Copenhagen" target="_blank" rel="noopener noreferrer">VEGA / Loppen / Byhaven</a></div>
+              <div class="card-desc">VEGA for bigger acts, Loppen in Christiania for gritty alt shows, Byhaven (summer) for free outdoor gigs at Pumpehuset.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Copenhagen+bike+tours" target="_blank" rel="noopener noreferrer">Guided bike tours</a></div>
+              <div class="card-desc">Easy overview of several neighbourhoods in a few hours without planning your own route. Good early‑trip activity.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Copenhagen+food+tour" target="_blank" rel="noopener noreferrer">Copenhagen food tours</a></div>
+              <div class="card-desc">Small‑group food walks (smørrebrød, pastries, cheese, beer). Combine with centre sightseeing.</div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <p class="small">
-      Tip: on your phone, tap any place name or "View photos" link to open it in Google Maps. Save the places into a list so you can see everything on one map.
-    </p>
-  </div>
+    <!-- MINI ROUTES -->
+    <section class="timeline-section" id="mini">
+      <h2 class="section-title">
+        <span class="section-icon" style="background:var(--amber-soft);color:var(--amber);">✦</span>
+        Mini itineraries – plug into any day
+      </h2>
+      <article class="mini">
+        <div class="mini-title">Harbour wellness &amp; industrial views</div>
+        <p class="mini-flow">Walk / bike to Refshaleøen <span class="arrow">→</span> CopenHot session <span class="arrow">→</span> beers at Mikkeller Baghaven <span class="arrow">→</span> food at Reffen.</p>
+      </article>
+      <article class="mini">
+        <div class="mini-title">Nørrebro food + beer crawl</div>
+        <p class="mini-flow">Jægersborggade shops &amp; cafés <span class="arrow">→</span> BRUS for beers + food <span class="arrow">→</span> Kølsters Tolv Haner for a slower, local finish.</p>
+      </article>
+      <article class="mini">
+        <div class="mini-title">Centre: food tour → classic cocktails</div>
+        <p class="mini-flow">Daytime food tour around the old town <span class="arrow">→</span> Torvehallerne grazing <span class="arrow">→</span> late‑night Ruby <span class="arrow">→</span> Brønnum.</p>
+      </article>
+      <article class="mini">
+        <div class="mini-title">Christiania &amp; a gig</div>
+        <p class="mini-flow">Christianshavn canals <span class="arrow">→</span> dinner in Christiania or at Broens Street Food <span class="arrow">→</span> show at Loppen or another Christiania venue.</p>
+      </article>
+      <article class="mini">
+        <div class="mini-title">Summer evening: swim → street food → Meatpacking</div>
+        <p class="mini-flow">Islands Brygge Harbour Baths <span class="arrow">→</span> Broens Street Food <span class="arrow">→</span> Jolene + Kødbyen bars.</p>
+      </article>
+
+      <div class="tip">
+        <strong>On your phone</strong>
+        Tap any place name to open it in Google Maps, then save it into a list so you can see the whole day on one map.
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Copenhagen Day 1 · March 2026 · Built as a simple static page so it’s fast and easy to tweak.
+  </footer>
+
+  <script>
+    // simple nav active state on click
+    document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = document.querySelectorAll('.nav a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        });
+      });
+
+      // collapsible sections
+      document.querySelectorAll('[data-collapse]').forEach(section => {
+        const trigger = section.querySelector('.collapse-trigger');
+        const body = section.querySelector('.collapse-body');
+        if (!trigger || !body) return;
+        trigger.addEventListener('click', () => {
+          const isOpen = trigger.classList.toggle('open');
+          body.classList.toggle('open', isOpen);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
