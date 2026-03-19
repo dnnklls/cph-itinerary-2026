@@ -297,10 +297,6 @@
       opacity: 0.7;
     }
 
-    .cards-section {
-      padding-top: 2.5rem;
-    }
-
     .cards {
       display: grid;
       grid-template-columns: 1fr;
@@ -615,108 +611,134 @@
     </section>
 
     <!-- LANDMARKS -->
-    <section class="cards-section" id="landmarks">
-      <h2 class="section-title">
-        <span class="section-icon" style="background:var(--blue-soft);color:var(--blue);">✦</span>
-        Free landmarks (centre block)
-      </h2>
-      <div class="cards">
-        <article class="card">
-          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Nyhavn%20Copenhagen" target="_blank" rel="noopener noreferrer">Nyhavn</a></div>
-          <div class="card-desc">17th‑century waterfront with colourful houses and boats. Very touristy but still pretty; easy to combine with canal tour.</div>
-        </article>
-        <article class="card">
-          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=The%20Little%20Mermaid%20Copenhagen" target="_blank" rel="noopener noreferrer">The Little Mermaid</a></div>
-          <div class="card-desc">Small bronze statue on the waterfront. Iconic, not huge – treat it as a bonus on a harbour walk, not the main event.</div>
-        </article>
-        <article class="card">
-          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Amalienborg%20Palace%20Copenhagen" target="_blank" rel="noopener noreferrer">Amalienborg Palace</a></div>
-          <div class="card-desc">Royal square with four identical palaces. Changing of the guard at noon; easy to swing past between Nyhavn and the harbour.</div>
-        </article>
-        <article class="card">
-          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Str%C3%B8get%20Copenhagen" target="_blank" rel="noopener noreferrer">Strøget</a></div>
-          <div class="card-desc">Pedestrian shopping street running across the old town. Free to walk, full of shops and street performers.</div>
-        </article>
-        <article class="card">
-          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Christiansborg%20Palace%20Tower%20Copenhagen" target="_blank" rel="noopener noreferrer">Christiansborg Palace Tower</a></div>
-          <div class="card-desc">Free elevator to a panoramic city view. Usually open late; queues can be long but the view is worth it.</div>
-        </article>
+    <section class="collapsible" id="landmarks">
+      <button class="collapse-trigger" type="button" onclick="toggleSection(this)">
+        <span>🏛 Free Landmarks (anytime in the centre block)</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="collapse-body">
+        <div class="collapse-inner">
+          <div class="cards">
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Nyhavn%20Copenhagen" target="_blank" rel="noopener noreferrer">Nyhavn</a></div>
+              <div class="card-desc">Colourful 17th‑century waterfront. Free to walk, touristy but pretty.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=The%20Little%20Mermaid%20Copenhagen" target="_blank" rel="noopener noreferrer">The Little Mermaid</a></div>
+              <div class="card-desc">Small bronze statue on the waterfront. ~15 min walk from Nyhavn.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Amalienborg%20Palace%20Copenhagen" target="_blank" rel="noopener noreferrer">Amalienborg Palace</a></div>
+              <div class="card-desc">Royal palace with four identical buildings. Guard change at 12:00 daily; free to watch.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Str%C3%B8get%20Copenhagen" target="_blank" rel="noopener noreferrer">Strøget</a></div>
+              <div class="card-desc">One of Europe's longest pedestrian streets. Shops and street performers.</div>
+            </article>
+            <article class="card">
+              <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Christiansborg%20Palace%20Tower%20Copenhagen" target="_blank" rel="noopener noreferrer">Christiansborg Tower</a></div>
+              <div class="card-desc">Free elevator for panoramic views. Usually open until around 21:00.</div>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- CAFES LIKE MAD & KAFFE -->
-    <section class="cards-section" id="cafes">
-      <h2 class="section-title">
-        <span class="section-icon" style="background:var(--green-soft);color:var(--green);">☕</span>
-        More cafes like Mad &amp; Kaffe
-      </h2>
-      <div class="cards">
-        <article class="card">
-          <div class="card-name">
-            <a href="https://www.google.com/maps/search/?api=1&query=Cadence%20Copenhagen" target="_blank" rel="noopener noreferrer">Cadence</a>
-            <span class="card-badge badge-vesterbro">Vesterbro</span>
+    <!-- CAFES -->
+    <section class="collapsible" id="cafes">
+      <button class="collapse-trigger" type="button" onclick="toggleSection(this)">
+        <span>☕ More Cafes Like Mad &amp; Kaffe</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="collapse-body">
+        <div class="collapse-inner">
+          <div class="cards">
+            <article class="card">
+              <div class="card-name">
+                <a href="https://www.google.com/maps/search/?api=1&query=Cadence%20Copenhagen" target="_blank" rel="noopener noreferrer">Cadence</a>
+                <span class="card-badge badge-vesterbro">Vesterbro</span>
+              </div>
+              <div class="card-desc">Creative, chef‑y brunch plates in a leafy, light space.</div>
+            </article>
+            <article class="card">
+              <div class="card-name">
+                <a href="https://www.google.com/maps/search/?api=1&query=Sixteen%20Twelve%20Copenhagen" target="_blank" rel="noopener noreferrer">Sixteen Twelve</a>
+                <span class="card-badge badge-norrebro">Nørrebro</span>
+              </div>
+              <div class="card-desc">Next‑level brunch with twists on classics, cool interiors.</div>
+            </article>
+            <article class="card">
+              <div class="card-name">
+                <a href="https://www.google.com/maps/search/?api=1&query=Sidecar%20Copenhagen" target="_blank" rel="noopener noreferrer">Sidecar</a>
+                <span class="card-badge badge-norrebro">Nørrebro</span>
+              </div>
+              <div class="card-desc">Cosy hygge brunch spot with boards. Backup if Mad &amp; Kaffe is slammed.</div>
+            </article>
+            <article class="card">
+              <div class="card-name">
+                <a href="https://www.google.com/maps/search/?api=1&query=Wulff%20%26%20Konstali%20Copenhagen" target="_blank" rel="noopener noreferrer">Wulff &amp; Konstali</a>
+              </div>
+              <div class="card-desc">Instagram‑worthy brunch boards, pick‑your‑own‑dishes style.</div>
+            </article>
           </div>
-          <div class="card-desc">Chef‑y brunch plates in a leafy, light space. Very similar build‑your‑own vibe to Mad &amp; Kaffe.</div>
-        </article>
-        <article class="card">
-          <div class="card-name">
-            <a href="https://www.google.com/maps/search/?api=1&query=Sixteen%20Twelve%20Copenhagen" target="_blank" rel="noopener noreferrer">Sixteen Twelve</a>
-            <span class="card-badge badge-norrebro">Nørrebro</span>
-          </div>
-          <div class="card-desc">Brunch with twists on classics on Jægersborggade. Same young/hipster energy, different dishes.</div>
-        </article>
-        <article class="card">
-          <div class="card-name">
-            <a href="https://www.google.com/maps/search/?api=1&query=Sidecar%20Copenhagen" target="_blank" rel="noopener noreferrer">Sidecar</a>
-            <span class="card-badge badge-norrebro">Nørrebro</span>
-          </div>
-          <div class="card-desc">Cosy, hygge brunch spot with brunch boards and a busy, young crowd.</div>
-        </article>
-        <article class="card">
-          <div class="card-name">
-            <a href="https://www.google.com/maps/search/?api=1&query=Wulff%20%26%20Konstali%20Copenhagen" target="_blank" rel="noopener noreferrer">Wulff &amp; Konstali</a>
-            <span class="card-badge badge-various">Various</span>
-          </div>
-          <div class="card-desc">Instagram‑famous brunch boards where you pick several small dishes – very close in spirit to Mad &amp; Kaffe.</div>
-        </article>
+        </div>
       </div>
     </section>
 
-    <!-- HIDDEN / SPEAKEASY BARS -->
-    <section class="cards-section" id="bars">
-      <h2 class="section-title">
-        <span class="section-icon" style="background:var(--purple-soft);color:var(--purple);">★</span>
-        Hidden / speakeasy‑ish bars
-      </h2>
-      <div class="cards">
-        <article class="card">
-          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Curfew%20Copenhagen" target="_blank" rel="noopener noreferrer">Curfew</a></div>
-          <div class="card-desc">Speakeasy‑style cocktail bar with a library entrance and 1920s/30s vibe. Ring the buzzer; book if you care about seats.</div>
-        </article>
-        <article class="card">
-          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Lidkoeb%20Copenhagen" target="_blank" rel="noopener noreferrer">Lidkoeb</a></div>
-          <div class="card-desc">Hidden in a backyard in Vesterbro with a top‑floor whisky lounge – feels like a townhouse you stumble into.</div>
-        </article>
-        <article class="card">
-          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=The%20Union%20Local%20Copenhagen" target="_blank" rel="noopener noreferrer">The Union Local</a></div>
-          <div class="card-desc">Small, dimly lit sister bar to The Union Kitchen, just off Nyhavn. Proper speakeasy feel and strong cocktails.</div>
-        </article>
-        <article class="card">
-          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=1656%20Cocktail%20Bar%20Copenhagen" target="_blank" rel="noopener noreferrer">1656 Cocktail Bar</a></div>
-          <div class="card-desc">Graffiti‑covered exterior, cosy interior, seasonal cocktail list. Feels like you’ve found a secret.</div>
-        </article>
-        <article class="card">
-          <div class="card-name"><a href="https://www.google.com/maps/search/?api=1&query=Pulp%20Bar%20Copenhagen" target="_blank" rel="noopener noreferrer">Pulp Bar</a></div>
-          <div class="card-desc">Playful, retro bar in Nørrebro with colourful drinks and a young local crowd.</div>
-        </article>
+    <!-- BARS -->
+    <section class="collapsible" id="bars">
+      <button class="collapse-trigger" type="button" onclick="toggleSection(this)">
+        <span>🍸 Hidden / Speakeasy‑ish Bars</span>
+        <span class="collapse-arrow">▼</span>
+      </button>
+      <div class="collapse-body">
+        <div class="collapse-inner">
+          <div class="cards">
+            <article class="card">
+              <div class="card-name">
+                <a href="https://www.google.com/maps/search/?api=1&query=Curfew%20Copenhagen" target="_blank" rel="noopener noreferrer">Curfew</a>
+                <span class="card-badge badge-vesterbro">Vesterbro</span>
+              </div>
+              <div class="card-desc">Library entrance, 1920s/30s vibe. Buzzer entry, reservations recommended.</div>
+            </article>
+            <article class="card">
+              <div class="card-name">
+                <a href="https://www.google.com/maps/search/?api=1&query=Lidkoeb%20Copenhagen" target="_blank" rel="noopener noreferrer">Lidkoeb</a>
+                <span class="card-badge badge-vesterbro">Vesterbro</span>
+              </div>
+              <div class="card-desc">Backyard entrance + top‑floor whisky lounge. Hidden‑bar energy.</div>
+            </article>
+            <article class="card">
+              <div class="card-name">
+                <a href="https://www.google.com/maps/search/?api=1&query=The%20Union%20Local%20Copenhagen" target="_blank" rel="noopener noreferrer">The Union Local</a>
+                <span class="card-badge badge-city">City</span>
+              </div>
+              <div class="card-desc">Small, dimly lit speakeasy near Nyhavn. Very cocktail‑focused.</div>
+            </article>
+            <article class="card">
+              <div class="card-name">
+                <a href="https://www.google.com/maps/search/?api=1&query=1656%20Cocktail%20Bar%20Copenhagen" target="_blank" rel="noopener noreferrer">1656 Cocktail Bar</a>
+                <span class="card-badge badge-vesterbro">Vesterbro</span>
+              </div>
+              <div class="card-desc">Graffiti exterior, cosy interior, strong seasonal cocktails.</div>
+            </article>
+            <article class="card">
+              <div class="card-name">
+                <a href="https://www.google.com/maps/search/?api=1&query=Pulp%20Bar%20Copenhagen" target="_blank" rel="noopener noreferrer">Pulp Bar</a>
+                <span class="card-badge badge-norrebro">Nørrebro</span>
+              </div>
+              <div class="card-desc">Playful retro speakeasy with colourful drinks and young crowd.</div>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- WHERE TO EAT -->
-    <section class="collapsible" id="eat" data-collapse>
-      <button class="collapse-trigger" type="button">
-        <span>Where to eat (2024–26 highlights)</span>
-        <span class="collapse-arrow">▾</span>
+    <section class="collapsible" id="eat">
+      <button class="collapse-trigger" type="button" onclick="toggleSection(this)">
+        <span>🍽 Where to Eat (2024–26 highlights)</span>
+        <span class="collapse-arrow">▼</span>
       </button>
       <div class="collapse-body">
         <div class="collapse-inner">
@@ -767,10 +789,10 @@
     </section>
 
     <!-- WHERE TO VISIT -->
-    <section class="collapsible" id="visit" data-collapse>
-      <button class="collapse-trigger" type="button">
-        <span>Where to visit (neighbourhoods, parks, museums)</span>
-        <span class="collapse-arrow">▾</span>
+    <section class="collapsible" id="visit">
+      <button class="collapse-trigger" type="button" onclick="toggleSection(this)">
+        <span>📍 Where to Visit (neighbourhoods, parks, museums)</span>
+        <span class="collapse-arrow">▼</span>
       </button>
       <div class="collapse-body">
         <div class="collapse-inner">
@@ -821,10 +843,10 @@
     </section>
 
     <!-- THINGS TO DO -->
-    <section class="collapsible" id="do" data-collapse>
-      <button class="collapse-trigger" type="button">
-        <span>Things to do (saunas, harbour, nightlife)</span>
-        <span class="collapse-arrow">▾</span>
+    <section class="collapsible" id="do">
+      <button class="collapse-trigger" type="button" onclick="toggleSection(this)">
+        <span>🎟 Things to Do (saunas, harbour, nightlife)</span>
+        <span class="collapse-arrow">▼</span>
       </button>
       <div class="collapse-body">
         <div class="collapse-inner">
@@ -914,18 +936,14 @@
           link.classList.add('active');
         });
       });
-
-      // collapsible sections
-      document.querySelectorAll('[data-collapse]').forEach(section => {
-        const trigger = section.querySelector('.collapse-trigger');
-        const body = section.querySelector('.collapse-body');
-        if (!trigger || !body) return;
-        trigger.addEventListener('click', () => {
-          const isOpen = trigger.classList.toggle('open');
-          body.classList.toggle('open', isOpen);
-        });
-      });
     });
+
+    function toggleSection(button) {
+      const body = button.nextElementSibling;
+      if (!body) return;
+      const isOpen = button.classList.toggle('open');
+      body.classList.toggle('open', isOpen);
+    }
   </script>
 </body>
 </html>
